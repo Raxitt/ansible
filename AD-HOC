@@ -1,0 +1,10 @@
+ansible demo -m ping
+ansible demo -a "pwd"
+ansible demo -a "ls-a"
+ansible demo -a "touch sample.txt"
+ansible demo -a "rm -rf sample.txt"
+ansible demo -a  "sudo yum install httpd"
+ansible demo -a "sudo which httpd"
+ansible demo -a systemctl status httpd"
+ansible demo -a "sudo yum remove httpd -y"
+ansible demo -b -a "which httpd"
