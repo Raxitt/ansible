@@ -1,0 +1,33 @@
+=> To CHECK THE PLAYBOOK : ansible-playbook play.yml --check
+
+=> To RUN THE PLAYBOOK : ansible-playbook play.yml
+
+=> TO KNOW THE OS FAMILY
+
+	$ansible demo -m setup
+
+=> TO ENCRYPT THE FILE
+
+	$ansible-vault encrypt loop.yml
+
+New Vault password:
+Confirm New Vault password:
+Encryption successful
+
+=>cat file.yml =>it will show in encrypted form
+
+=>To VIEW THE ENCRYPTED FILE
+
+	$ ansible-vault view loop.yml
+Vault password:
+
+=>TO DECRYPT THE FILE
+	
+	 $ ansible-vault decrypt loop.yml
+Vault password:
+Decryption successful
+
+=>To EDIT THE DATA IN ENCRYPTED FILE
+
+	$ ansible-vault edit loop.yml
+Vault password:
