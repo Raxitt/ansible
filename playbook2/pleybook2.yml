@@ -1,0 +1,27 @@
+TASK 2: BY USING VARIABLE SECTION INSTALL HTTPD
+---
+- name: httpd
+  hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    httpd_package_name: httpd
+    httpd_package_state: present
+  tasks:
+  - name: install httpd
+    yum:
+      name: "{{httpd_package_name}}"
+      state: "{{httpd_package_state}}"
+		OR
+---
+- name: httpd
+  hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: httpd
+  tasks:
+  - name: install httpd
+    action: yum name= '{{pkgname}}' state=installed
