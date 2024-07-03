@@ -1,0 +1,82 @@
+REQUIREMENTS
+-------------------------
+2 - INSTANCES
+
+1->MASTER NODE
+2->SLAVE NODE
+
+CONFIGURATION	
+		
+MASTER NODE TERMINAL
+---------------------------
+1) $ sudo hostnamectl set-hostname master
+2) $/bin/bash
+2) $ sudo amazon-linux-extras install ansible2 -y
+3) $ansible --version
+4) $vi /etc/ansible/hosts
+  after #ex1 type
+ [demo]
+ patse private IP of worker node
+
+5) vi /etc/ansible/ansible.cfg
+ uncomment-> inventory and sudo-user = root
+
+6)useradd ansible   => cat /etc/passwd //to check the user
+7)passwd ansible
+ 1234
+ 1234
+
+8) $visudo
+after root permission-> root ALL=(ALL) ALL
+type-> ansible ALL=(ALL) NOPASSWD: ALL
+
+9) su - ansible
+10) sudo yum install httpd -y
+11) sudo which httpd
+12) exit
+13) vi /etc/ssh/sshd_config
+
+ uncomment: permitrootlogin ->yes
+uncomment  : passwordauthentication ->yes
+comment : passwordauthentication ->no
+
+14) service sshd restart
+15) su - ansible
+
+16) ssh-keygen       
+ enter
+enter
+enter
+
+17) ssh-copy-id ansible@private-ip of slave-node
+
+18)ssh private-ip-worker-node                           //it will connect to the worker node
+19)exit
+
+20)touch sample.txt
+21)ls
+
+---------------------------------------------------------------------------------------
+In SLAVE_NODE TERMINAL
+---------------------------------------------------------------------------------------
+
+1) sudo hostnamectl set-hostname slave
+2) /bin/bash
+3) useradd ansible
+4) passwd ansible ->1234-> 1234
+
+5) visudo
+ after root permission
+ansible ALL=(ALL) NOPASSWD: ALL
+
+5) vi /etc/ssh/sshd_config
+      uncomment: permitrootlogin ->yes
+       uncomment  : passwordauthentication ->yes
+       comment : passwordauthentication ->no
+
+5) service sshd restart 
+7)su - ansible
+8)ls 
+---------------------------------------------------------------------------------------------------
+ 
+NOTE: all commands  and scripts should be executed in master-node terminal
