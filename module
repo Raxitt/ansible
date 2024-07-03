@@ -1,0 +1,61 @@
+TASK 1: Install httpd by using module commands
+
+	To install httpd: $ ansible demo -b -m yum -a "pkg=httpd state=present"
+
+	To check httpd : $ ansible demo -b -m command -a "sudo which httpd"
+	
+	To start the sevice: $ ansible demo -b -m service -a "name=httpd state=started" 
+
+	To stop httpd: $ ansible demo -b -m service -a "name=httpd state=stopped" 
+	
+	To remove httpd: $  ansible demo -b -m name -a "name=httpd state=removed"
+---------------------------------------------------------------------------------------------------
+TASK 2:Create User by using Module Command
+
+	To Create User: $ ansible demo -b -m user -a "name=sow state=present"
+  
+	To Check User: $ ansible demo -b -a "cat /etc/passwd"
+
+	To delete User: $ ansible demo -b -m user -a "name=sow state=absent"
+
+	To check user:$ ansible demo -b -a "cat /etc/passwd"
+--------------------------------------------------------------------------------------
+TASK 3: To create group and delete group by 
+ 
+ 	 To create group:$ ansible demo -b -m group -a "name=devops state=present"
+
+   To check group: $ansible demo -b -a "cat /etc/group"
+
+ 	 To delete group: $ansible demo -b -m group -a "name=devops state=absent"
+   
+ 	 To check group: $ansible demo -b -a "cat /etc/group"
+------------------------------------------------------------------------------------------------------
+TASK 4:To create directory and delete directory
+
+  	To create directory: $ ansible demo -b -m file -a "path=/home/ansible/demo state=directory"
+
+   	To check directory: $ansible demo -b -m command -a "ls"
+   
+   	To delete directory: $ ansible demo -b -m file -a "path=/home/ansible/demo state=absent"
+
+   	To check directory:ansible demo -b -m command -a "ls"
+------------------------------------------------------------------------------
+TASK 5:To create directory and delete directory with permissions
+  
+	To create directory: $ ansible demo -b -m file -a "path=/home/ansible/demo state=directory mode=0755"
+ 	
+	To check directory: $ ansible demo -b -m command -a "ls"
+   	
+	To delete directory: $ ansible demo -b -m file -a "path=/home/ansible/demo state=absent mode=0755"
+   
+	To check directory: $ ansible demo -b -m command -a "ls"
+--------------------------------------------------------------------------------------------------------
+TASK 6:To create file and delete file
+  
+  To create file: $ ansible demo -b -m file -a "path=/home/ansible/demo.txt state=touch"
+ 
+	To check file: $ ansible demo -b -m command -a "ls"
+   
+	To delete file: $ ansible demo -b -m file -a "path=/home/ansible/demo.txt state=touch state=absent"
+ 
+	To check file: $ansible demo -b -m command -a "ls"
